@@ -1,6 +1,6 @@
 import pyautogui,time
 # 确定按钮的坐标
-nameField=(648, 401)
+nameField=(58, 234)
 submitButton=(648, 505)
 submitButtonColor=(255, 255, 255)
 submitAnotherLink=(648, 604)
