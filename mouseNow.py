@@ -12,6 +12,6 @@ try:
         print('\b' * len(positionString), end='', flush=True)
 except KeyboardInterrupt:
     print('\nDone') 
-pyautogui.screenshot('screenshot.png') #截图
-listSub=pyautogui.locateOnScreen('D:\coding\submit.png')
-print(listSub)
+#pyautogui.screenshot('screenshot.png') #截图
+#listSub=pyautogui.locateOnScreen('D:\coding\submit.png')
+#print(listSub)
