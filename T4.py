@@ -1,10 +1,11 @@
 import pyautogui,time
+#谷歌浏览器
+submitButton=(1146, 1080)
+submitButtonColor=(255, 255, 255)
 
-submitButton=(1272, 1047)
-submitButtonColor=(70, 130, 188)
-
-for i in range(11):
-    pyautogui.click(486,635,button='left')
+for i in range(17):
+    time.sleep(1)
+    pyautogui.click(440,593,button='left')
     #print('>>> 5 second pause to let uwer press CTRL-C <<<')
     time.sleep(3)
     # 获取页面的总高度  
@@ -12,13 +13,13 @@ for i in range(11):
     # 滚动到底部  
     pyautogui.scroll(-total_height)
     time.sleep(1)
-    while pyautogui.pixelMatchesColor(submitButton[0], submitButton[1], submitButtonColor):
+    #while pyautogui.pixelMatchesColor(submitButton[0], submitButton[1], submitButtonColor):
         #print('可以点击确认按钮了')
-        pyautogui.click(1272, 1047, button='left')
-        time.sleep(1)
-        pyautogui.click(1191, 829, button='left')
-        time.sleep(1)
-        pyautogui.click(1260, 829, button='left')
-        time.sleep(3)
+    pyautogui.click(1146, 1080, button='left')
+    time.sleep(2)
+    pyautogui.click(1222, 837, button='left')
+    time.sleep(2)
+    pyautogui.click(1285, 830, button='left')
+    time.sleep(1)
 
 

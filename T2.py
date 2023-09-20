@@ -1,7 +1,7 @@
 import pyautogui
 import time
 #edge浏览器
-for i in range(18):
+for i in range(28):
     time.sleep(1)
     pyautogui.click(445,599,button='left')
     time.sleep(3)

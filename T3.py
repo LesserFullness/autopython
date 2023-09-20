@@ -3,13 +3,22 @@ import matplotlib.pyplot as plt
 import PIL
 import numpy as np
 from matplotlib.font_manager import FontProperties #字体
+import tkinter as tk
+from tkinter import filedialog
 
 # 设置字体为SimHei，这是一种常见的支持中文的字体  
 font = FontProperties(fname="D:/OneDrive/code/autopython/SimHei.ttf")    
 #plt.rcParams['font.sans-serif'] = [font.get_name()]  # 在绘制时使用这个字体
 
+root=tk.Tk()
+root.withdraw() #隐藏主窗口
+#打开文件对话框，选择文件夹
+#folder_path=filedialog.askdirectory()
+#打开文件对话框，选择文件
+file_path=filedialog.askopenfilename(filetypes=[("Excel Files","*.xlsx")])
 # 读取Excel文件  
-df = pd.read_excel('T3.xlsx')  
+#df = pd.read_excel('T3.xlsx')
+df=pd.read_excel(file_path)
 
 #遍历每一行数据，绘制折线图并保存
 for i in range(len(df)):
@@ -20,7 +29,7 @@ for i in range(len(df)):
     data=row[1:]
     #绘制折线图
     plt.figure(figsize=(7,4)) #创建一个新的图形窗口,7英寸宽，4英寸高
-    plt.plot(data)
+    plt.plot(data,linewidth=3.0) #折线的宽度是3
 # 提取需要绘制的数据  
 #x_data = df.iloc[0]  # 假设第一行是x轴数据
 #y_data = df.iloc[:, 1]  # 假设第二列是y轴数据  
@@ -54,5 +63,5 @@ for i in range(len(df)):
 #plt.show()
 
     # 保存折线图
-    plt.savefig(f'{chart_name}.png', dpi=100)
+    plt.savefig(f'{chart_name}.png', dpi=200)
     plt.close()

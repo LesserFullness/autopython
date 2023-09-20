@@ -57,9 +57,11 @@ for gd in data_dict:
     pyautogui.click(1757, 1073, button='left')
     time.sleep(1)
     #截止时间
-    pyautogui.click(660, 757, button='left')
-    time.sleep(0.5)
-    pyautogui.click(725, 1017, button='left')
+    pyautogui.click(874, 752, button='left')#点击月历图标
+    time.sleep(1)
+    pyautogui.click(811, 798, button='left')#月数翻页
+    time.sleep(1)
+    pyautogui.click(725, 959, button='left')
     time.sleep(1)
     #审批人
     pyautogui.click(1390, 810, button='left')
@@ -94,7 +96,7 @@ for gd in data_dict:
     time.sleep(1)
     #提交
     pyautogui.click(413, 1305, button='left')
-    time.sleep(10)
+    time.sleep(15)
     #操作成功
     pyautogui.click(1286, 830, button='left')
     time.sleep(3)
