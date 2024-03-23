@@ -1,14 +1,24 @@
+import matplotlib.pyplot as plt  
 
-# 导入必要的库  
-from PyInstaller import __main__  
+# 创建数据  
+x = [1, 2, 3, 4, 5]  
+y = [10, 8, 6, 4, 2]  
 
-# 设置字体文件的路径  
-font_path = "D:/OneDrive/code/autopython/fonts/SimHei.ttf"  
+# 创建图形  
+fig, ax = plt.subplots()  
 
-# 打包可执行文件，并添加字体文件  
-__main__.run([  
-    "T3LineChart.py",
-    "--add-data", f"{font_path};.",
-    "-w",
-    "-F" 
-])
+# 绘制折线图  
+ax.plot(x, y)  
+
+# 将x轴位置设置为10刻度处  
+ax.set_xticks([10])  
+ax.spines['bottom'].set_position('zero')  
+ax.spines['top'].set_color('none')  
+ax.spines['right'].set_color('none')  
+ax.spines['left'].set_position('zero')  
+ax.xaxis.set_ticks_position('bottom')  
+ax.set_xlabel('X轴标签')  
+ax.set_title('标题')   
+
+# 显示图形  
+plt.show()
