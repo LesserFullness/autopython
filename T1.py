@@ -50,18 +50,25 @@ for gd in data_dict:
     #处理人
     pyautogui.click(1400, 695, button='left')
     time.sleep(2)
-    pyautogui.click(1140, 570, button='left')#全选
-    time.sleep(1)
-    pyautogui.click(1770, 1070, button='left')
+    #pyautogui.click(1140, 570, button='left')#全选
+    pyautogui.click(970, 575, button='left')
     time.sleep(0.5)
-    #pyautogui.click(1757, 1073, button='left')
+    pyperclip.copy('余小龙')
+    pyautogui.hotkey('ctrl', 'v')
+    time.sleep(1)
+    #pyautogui.click(1770, 1070, button='left')
+    pyautogui.click(1090, 570, button='left')#搜索
+    time.sleep(0.5)
+    pyautogui.doubleClick(1140, 570, button='left')#全选
+    time.sleep(1)
+    pyautogui.click(1770, 1075, button='left') #确定
     time.sleep(1)
     #截止时间
     pyautogui.click(874, 752, button='left')#点击月历图标
     time.sleep(1)
     pyautogui.click(810, 795, button='left')#月数翻页
     time.sleep(1)
-    pyautogui.click(830, 895, button='left')
+    pyautogui.click(725, 950, button='left')
     time.sleep(1)
     #审批人
     pyautogui.click(1400, 800, button='left')
@@ -96,7 +103,7 @@ for gd in data_dict:
     time.sleep(1)
     #提交
     pyautogui.click(410, 1305, button='left')
-    time.sleep(15)
+    time.sleep(30)
     #操作成功
     pyautogui.click(1290, 830, button='left')
     time.sleep(3)
