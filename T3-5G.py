@@ -9,12 +9,14 @@ import os
 # 设置字体为SimHei，这是一种常见的支持中文的字体  
 font = FontProperties(fname="D:/OneDrive/code/autopython/SimHei.ttf")    
 
+# 初始化Tkinter窗口以选择文件
 root=tk.Tk()
 root.withdraw() #隐藏主窗口
-
-#打开文件对话框，选择文件
+# 打开文件对话框，选择文件
 file_path=filedialog.askopenfilename(filetypes=[("Excel Files","*.xlsx")])
-# 读取Excel文件  
+
+# 读取Excel文件
+# 第一列是文件夹名称，第二列是图表名称，第三列及以后是绘图数据
 df=pd.read_excel(file_path)
 
 # 创建文件夹并保存折线图
@@ -24,6 +26,7 @@ def save_chart_to_folder(folder_name, chart_name, data):
     os.chdir(folder_name)  # 切换到文件夹中
     plt.savefig(f'{chart_name}.png', dpi=200)  # 保存折线图
     os.chdir('..')  # 切换回原来的工作目录
+
 
 #遍历每一行数据，绘制折线图并保存
 for i in range(len(df)):
@@ -70,5 +73,8 @@ for i in range(len(df)):
     #plt.savefig(f'{chart_name}.png', dpi=200)
     #plt.show()
     #plt.close()
+
     # 保存折线图到文件夹中
     save_chart_to_folder(folder_name, chart_name, data)
+    # 关闭图形
+    plt.close(fig)
