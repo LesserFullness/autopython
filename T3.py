@@ -9,12 +9,14 @@ import os
 # 设置字体为SimHei，这是一种常见的支持中文的字体  
 font = FontProperties(fname="D:/OneDrive/code/autopython/SimHei.ttf")    
 
+# 初始化Tkinter窗口以选择文件
 root=tk.Tk()
 root.withdraw() #隐藏主窗口
-
 #打开文件对话框，选择文件
 file_path=filedialog.askopenfilename(filetypes=[("Excel Files","*.xlsx")])
-# 读取Excel文件  
+
+# 读取Excel文件
+# 第一列是文件夹名称，第二列是图表名称，第三列及以后是绘图数据
 df=pd.read_excel(file_path)
 
 # 创建文件夹并保存折线图
@@ -24,6 +26,7 @@ def save_chart_to_folder(folder_name, chart_name, data):
     os.chdir(folder_name)  # 切换到文件夹中
     plt.savefig(f'{chart_name}.png', dpi=200)  # 保存折线图
     os.chdir('..')  # 切换回原来的工作目录
+
 
 #遍历每一行数据，绘制折线图并保存
 for i in range(len(df)):
@@ -40,14 +43,17 @@ for i in range(len(df)):
     plt.plot(data,linewidth=3.0) #折线的宽度是3
 
     # 设置x轴和y轴的边界值  
-    plt.xlim([0, 99])  # 设置x轴边界值，这里设置为0到10  
+    plt.xlim([0, 99])  # 设置x轴边界值，这里设置为0到99
     plt.ylim([-130,-60])  # 设置y轴边界值，这里设置为-130到-60
 
-    # 设置x轴的刻度间隔和标签  
+    # 设置x轴的刻度间隔和标签  #rotation=270，将刻度标签逆时针旋转270度。
     plt.xticks(np.arange(0, 100, 3), ['PRB0', 'PRB3', 'PRB6', 'PRB9', 'PRB12', 'PRB15', 'PRB18', 'PRB21', 'PRB24', 'PRB27', 'PRB30',
                                 'PRB33', 'PRB36', 'PRB39', 'PRB42', 'PRB45', 'PRB48', 'PRB51', 'PRB54', 'PRB57', 'PRB60', 'PRB63',
                                 'PRB66', 'PRB69', 'PRB72', 'PRB75', 'PRB78', 'PRB81', 'PRB84', 'PRB87', 'PRB90', 'PRB93', 'PRB96',
                                 'PRB99'], rotation=270)
+    #tick_positions = np.arange(0, 100, 3)  # 刻度位置  
+    #labels = ['PRB' + str(i*3) for i in range(34)]  # 生成对应的标签  
+    #plt.xticks(tick_positions, labels, rotation=270)  
 
     # 在多个y处添加透明度为50%的线条  
     y_values = [-120,-110,-100,-90,-80,-70]  
@@ -73,3 +79,5 @@ for i in range(len(df)):
     #plt.close()
     # 保存折线图到文件夹中
     save_chart_to_folder(folder_name, chart_name, data)
+    # 关闭图形
+    plt.close(fig)
